@@ -17,6 +17,8 @@ class FeedCell: UITableViewCell {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var imageUrlLabel: UILabel!
     
+//    deneme tasks
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,6 +32,7 @@ class FeedCell: UITableViewCell {
 
     @IBAction func likeButtonClicked(_ sender: Any) {
         print("clicked like button")
+//        silinecek
+        print("deneme test")
     }
-    
 }
