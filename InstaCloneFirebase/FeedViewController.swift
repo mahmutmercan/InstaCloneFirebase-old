@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SDWebImage
+import Kingfisher
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -44,6 +45,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.userCommentArray.removeAll(keepingCapacity: false)
                     self.likeArray.removeAll(keepingCapacity: false)
                     self.imageArrayUrl.removeAll(keepingCapacity: false)
+                    
                     for document in snapshot!.documents {
                         let documentID = document.documentID
                         if let postedBy = document.get("postedBy") as? String{
@@ -61,13 +63,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                         if let imageUrlLabel = document.get("imageUrlLabel") as? String{
                             self.imageArrayUrl.append(imageUrlLabel)
                         }
+                        
                     }
                     self.tableView.reloadData()
                     
                 }
             }
         }
-        
     }
     
     
@@ -77,14 +79,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return userEmailArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeedCell
         cell.userEmailLabel.text = userEmailArray[indexPath.row]
         cell.likeLabel.text = String(likeArray[indexPath.row])
         
-        cell.imageUrlLabel.text = String(userImageArray[indexPath.row])
+        //bu satırı story den kaldırdım istersen ekle
+        //cell.imageUrlLabel.text = String(userImageArray[indexPath.row])
 
         cell.commentLabel.text = userCommentArray[indexPath.row]
+        //cell.userImageView.image =  UIImage(named: "monalisa")
         cell.userImageView.sd_setImage(with: URL(string: self.userImageArray[indexPath.row]))
+        
         return cell
     }
 }

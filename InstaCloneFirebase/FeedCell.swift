@@ -35,4 +35,5 @@ class FeedCell: UITableViewCell {
 //        silinecek
         print("deneme test")
     }
+    
 }

@@ -11,6 +11,7 @@ pod 'Firebase/Core'
 pod 'Firebase/Firestore'
 pod 'Firebase/Storage'
 pod 'SDWebImage', '~> 5.0'
+pod 'Kingfisher', '~> 5.0'
 
   # Pods for InstaCloneFirebase
 
